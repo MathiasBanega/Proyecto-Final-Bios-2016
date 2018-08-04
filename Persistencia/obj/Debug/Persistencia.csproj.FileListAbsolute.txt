@@ -1,0 +1,7 @@
+C:\Paginas web\Casas de comidas\Persistencia\bin\Debug\Persistencia.dll
+C:\Paginas web\Casas de comidas\Persistencia\bin\Debug\Persistencia.pdb
+C:\Paginas web\Casas de comidas\Persistencia\bin\Debug\Entidades.dll
+C:\Paginas web\Casas de comidas\Persistencia\bin\Debug\Entidades.pdb
+C:\Paginas web\Casas de comidas\Persistencia\obj\Debug\Persistencia.csprojResolveAssemblyReference.cache
+C:\Paginas web\Casas de comidas\Persistencia\obj\Debug\Persistencia.dll
+C:\Paginas web\Casas de comidas\Persistencia\obj\Debug\Persistencia.pdb

@@ -1,0 +1,4 @@
+C:\Paginas web\Casas de comidas\Entidades\bin\Debug\Entidades.dll
+C:\Paginas web\Casas de comidas\Entidades\bin\Debug\Entidades.pdb
+C:\Paginas web\Casas de comidas\Entidades\obj\Debug\Entidades.dll
+C:\Paginas web\Casas de comidas\Entidades\obj\Debug\Entidades.pdb

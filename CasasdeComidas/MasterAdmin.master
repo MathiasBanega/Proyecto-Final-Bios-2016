@@ -1,0 +1,72 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="MasterAdmin" CodeBehind="MasterAdmin.master.cs" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style3
+        {
+            height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <table style="width:100%;">
+        <tr>
+            <td bgcolor="#706FD3" class="style3">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Image ID="imgLogo" runat="server" Height="30px" style="margin-left: 0px" 
+                    Width="31px" />
+            </td>
+            <td bgcolor="#706FD3" class="style3">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Label ID="Label1" runat="server" Font-Size="X-Large" ForeColor="#F7F1E3" 
+                    Text=" ¡Bienvenidos a ComidaRapida.com el mejor sitio para ordenar comida a domicilio!"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Label ID="lblUsuario" runat="server" Font-Size="X-Large" 
+                    ForeColor="#F7F1E3"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="btnCerrarSesion" runat="server" BackColor="#706FD3" 
+                    BorderStyle="None" Font-Size="X-Large" ForeColor="#F7F1E3" Height="35px" 
+                    Text="Cerrar Sesion" Width="159px" />
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#474787" class="style2" colspan="2">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="btnABMCasaComidas" runat="server" BackColor="#474787" 
+                    BorderStyle="None" Font-Size="X-Large" ForeColor="#F7F1E3" Height="40px" 
+                    Text="ABM Casa de Comidas" Width="271px" 
+                    PostBackUrl="~/ABMCasaComidas.aspx" />
+                <asp:Button ID="btnABMadministrador" runat="server" BackColor="#474787" 
+                    BorderStyle="None" Font-Size="X-Large" ForeColor="#F7F1E3" Height="40px" 
+                    style="margin-top: 0px" Text="ABM Administrador" Width="230px" 
+                    PostBackUrl="~/ABMadmin.aspx" />
+                <asp:Button ID="btnABMplatos" runat="server" BackColor="#474787" 
+                    BorderStyle="None" Font-Size="X-Large" ForeColor="#F7F1E3" Height="40px" 
+                    style="margin-top: 0px" Text="ABM Platos" Width="230px" 
+                    PostBackUrl="~/ABMplatos.aspx" />
+                <asp:Button ID="btnEntregaDePedidos" runat="server" BackColor="#474787" 
+                    BorderStyle="None" Font-Size="X-Large" ForeColor="#F7F1E3" Height="40px" 
+                    style="margin-top: 0px" Text="Entrega de Pedidos" Width="230px" 
+                    PostBackUrl="~/frmEntregaPedido.aspx" />
+                <asp:Button ID="btnListadoPedidos" runat="server" BackColor="#474787" 
+                    BorderStyle="None" Font-Size="X-Large" ForeColor="#F7F1E3" Height="40px" 
+                    style="margin-top: 0px" Text="Listado de Pedidos" Width="230px" 
+                    PostBackUrl="~/frmListadoPedidos.aspx" />
+            </td>
+        </tr>
+    </table>
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
