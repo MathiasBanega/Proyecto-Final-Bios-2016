@@ -45,7 +45,7 @@ namespace Entidades
             }
         }
 
-        public string Especializacion//no hay controles porque las opciones se van a poner en un drop down list ya que son limitadas.
+        public string Especializacion
         {
             get { return especializacion; }
             set { especializacion = value; }           

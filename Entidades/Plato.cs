@@ -15,7 +15,7 @@ namespace Entidades
       public int Id
       {
           get { return id; }
-          set { id = value; }//*
+          set { id = value; }
       }
 
       public string Nombre

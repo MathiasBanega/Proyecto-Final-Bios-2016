@@ -11,7 +11,7 @@ public partial class ABMCasaComidas : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        //hacer que todas las cosas sean invisibles aca mediante un metodo
+       
         if (!IsPostBack)
             DesactivarBotones();
     }
@@ -68,7 +68,7 @@ public partial class ABMCasaComidas : System.Web.UI.Page
     }
 
 
-    //acciones de los botones
+    
     protected void btnBuscar_Click(object sender, EventArgs e)
     {
         try

@@ -9,9 +9,9 @@ namespace Logica
 {
    public class LPlato
     {
-       public static Plato BuscarPlato(int _id,string nombC)
+       public static Plato BuscarPlato(int _id,long _rut)
        {
-           Plato p = Pplato.BuscarPlato(_id,nombC);
+           Plato p = Pplato.BuscarPlato(_id,_rut);
            return p;
        }
 
@@ -21,5 +21,14 @@ namespace Logica
           return id;
        }
 
+       public static void Modificar(Plato p)
+       {
+           Pplato.Modificar(p);
+       }
+
+       public static void Eliminar(Plato p)
+       {
+           Pplato.Modificar(p);
+       }
     }
 }

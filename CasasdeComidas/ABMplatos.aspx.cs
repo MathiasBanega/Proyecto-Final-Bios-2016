@@ -68,6 +68,35 @@ public partial class ABMplatos : System.Web.UI.Page
         btnAceptar.Visible = false;
         imgFoto.Visible = false;
         btnVerImg.Visible = false;
+        imgFoto.ImageUrl = "";
+        txtNombre.Text = "";
+        txtPrecio.Text = "";
+        txtCodigo.Text = "";
+        btnModificar.Visible = false;
+        btnEliminar.Visible = false;
+        GridView1.DataSource = null;
+        GridView1.DataBind();
+    }
+
+    protected void ActivarBM()
+    {
+        txtCodigo.Visible = true;
+        txtNombre.Visible = true;
+        txtPrecio.Visible = true;
+        fupImagen.Visible = true;
+        btnGuardar.Visible = true;
+        lblImg.Visible = true;
+        lblNom.Visible = true;
+        lblPre.Visible = true;
+        txtCodigo.Enabled = false;
+        btnBuscar.Enabled = false;
+        ddlNombreCasas.Enabled = false;
+        btnCancelar.Visible = true;
+        lblError.Text = "";
+        lnkNuevo.Visible = false;
+        //btnAceptar.Visible = true;
+        imgFoto.Visible = true;
+        btnVerImg.Visible = true;
     }
 
     protected void txtPrecio_TextChanged(object sender, EventArgs e)
@@ -79,9 +108,7 @@ public partial class ABMplatos : System.Web.UI.Page
 
     protected void lnkNuevo_Click(object sender, EventArgs e)
     {
-        ActivarAlta();
-        //aca ya se crea la casa segun el nombre seleccionado para usar luego al crear el plato
-        
+        ActivarAlta();        
     }
 
     protected void btnBuscar_Click(object sender, EventArgs e)
@@ -89,22 +116,26 @@ public partial class ABMplatos : System.Web.UI.Page
 
         try
         {
-            Plato p = LPlato.BuscarPlato(Convert.ToInt32(txtCodigo.Text),ddlNombreCasas.SelectedItem.Text);
+            int id = Convert.ToInt32(txtCodigo.Text);
+            long rut = Convert.ToInt64(ddlNombreCasas.SelectedItem.Value);
+            Plato p = LPlato.BuscarPlato(id, rut);
             List<Plato> lista = new List<Plato>();
             
             
             if (p == null)
             {
+                Session["Plato"] = p;
                 GridView1.DataBind();
                 lblError.Visible = true;
                 lnkNuevo.Visible = true;
                 btnEliminar.Visible = false;
-                btnModificar.Visible = false;//ver si tengo que hacer un metodo para esto, queda feo asi.
+                btnModificar.Visible = false;
                 lblError.Text = "No se encontro ningun plato con ese identificador.";
             }
 
             else
             {
+                Session["Plato"] = p;
                 lista.Add(p);
                 lblError.Text = "";
                 lnkNuevo.Visible = false;
@@ -134,8 +165,6 @@ public partial class ABMplatos : System.Web.UI.Page
             Session["Imagen"] = "~/imagenes/" + fupImagen.FileName;
             imgFoto.ImageUrl = Session["Imagen"].ToString();
 
-            //imgfoto.imageurl = "~/imagenes/" + fupimagen.filename;
-
             imgFoto.Width = fupImagen.Width;
             imgFoto.Height = fupImagen.Height;
         }
@@ -149,14 +178,37 @@ public partial class ABMplatos : System.Web.UI.Page
 
     protected void btnGuardar_Click(object sender, EventArgs e)
     {
-
+        try
+        {
+            int cod = Convert.ToInt32(txtCodigo.Text);
+            string nom = txtNombre.Text;
+            string img = imgFoto.ImageUrl;
+            double pre = Convert.ToDouble(txtPrecio.Text);
+            Plato p = (Plato)Session["Plato"];
+            Casa c = p.Casa;
+            p = new Plato(cod, nom, img, pre, c);
+            LPlato.Modificar(p);
+            //sube p a session y muestra en grid view, tambien lblerror dice que se cambio con exito.
+            Session["Plato"] = p;
+            List<Plato> l = new List<Plato>();
+            l.Add(p);
+            LimpiarFormulario();
+            GridView1.DataSource = l;
+            GridView1.DataBind();
+            btnModificar.Visible = true;
+            btnEliminar.Visible = true;
+            lblError.Text = "Se Modifico el plato con exito.";
+            
+        }
+        catch(Exception ex)
+        { lblError.Text = ex.Message; }
     }
 
     protected void btnAceptar_Click(object sender, EventArgs e)
     {
         try
         {
-            //en este try se comprueba que todos los datos esten bien
+            
             double precio = Convert.ToDouble(txtPrecio.Text);
             string nombre = txtNombre.Text;
             string img = Session["Imagen"].ToString();
@@ -180,11 +232,10 @@ public partial class ABMplatos : System.Web.UI.Page
            
             try
             {
-                //Plato p = (Plato)Session["Plato"];
+                
                 int id = LPlato.Agregar(p);
                 LimpiarFormulario();
-                lblError.Text = "Se agregó el plato con exito, su identificador es: " + id;
-                //al agregar el plato hay que hacer que loa imagen se limpie porque queda la del plato anterior.
+                lblError.Text = "Se agregó el plato con exito, su identificador es: " + id;             
             }
 
             catch (Exception ex)
@@ -194,8 +245,40 @@ public partial class ABMplatos : System.Web.UI.Page
         }
 
         catch
-        { lblError.Text = "Error al ingresar los datos."; }//porbar ex.message a ver si me saltan errores mas especificos.
+        { lblError.Text = "Error al ingresar los datos."; }
                
+    }
+
+    protected void btnModificar_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            ActivarBM();
+            Plato p = (Plato)Session["Plato"];
+            txtNombre.Text = p.Nombre;
+            txtPrecio.Text = p.Precio.ToString();
+            imgFoto.ImageUrl = p.Imagen;//hay que buscar bien las imagenes para cada plato  
+            imgFoto.Width = fupImagen.Width;
+            imgFoto.Height = fupImagen.Height;
+        }
+        catch (Exception ex)
+        { lblError.Text = ex.Message; }
+    }
+
+    protected void btnEliminar_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            Plato p = (Plato)Session["Plato"];
+            LPlato.Eliminar(p);
+            LimpiarFormulario();
+
+            lblError.Text = "Se elimino el plato y todas sus dependencias.";
+            
+        }
+
+        catch (Exception ex)
+        { lblError.Text = ex.Message; }
     }
 
     

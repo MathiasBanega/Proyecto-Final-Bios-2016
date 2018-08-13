@@ -26,7 +26,7 @@ namespace Persistencia
            try
            {
                con.Open();
-               lector = com.ExecuteReader();// metodo
+               lector = com.ExecuteReader();
 
                if (lector.Read())
                {
@@ -121,7 +121,7 @@ namespace Persistencia
        {
            SqlConnection con = new SqlConnection(Conexion.Con);
            SqlCommand com = new SqlCommand("EliminarCasa", con);
-           com.CommandType = CommandType.StoredProcedure;//indicar que el comando es un procedimiento almacenado
+           com.CommandType = CommandType.StoredProcedure;
            com.Parameters.AddWithValue("@rut", _Rut);
            SqlParameter retorno = new SqlParameter("@retorno", SqlDbType.Int);
            retorno.Direction = ParameterDirection.ReturnValue;
@@ -129,7 +129,7 @@ namespace Persistencia
 
            try
            {
-               con.Open();//abrir la conexion!!
+               con.Open();
                com.ExecuteNonQuery();
 
                if ((int)retorno.Value == -1)

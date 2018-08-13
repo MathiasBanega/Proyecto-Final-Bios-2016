@@ -157,12 +157,13 @@ go
 ----------------------------------------------------------------------------------------------------------------------------
 create proc Buscarplato
 @idplato int,
-@nombcasa varchar(50)
+@rut bigint
+--@nombcasa varchar(50)
 as
 begin
 	--declaro variable que sea el rut de la casa
-	declare @rut bigint
-	execute BuscarIDCasa @nombcasa, @rut output--se puede cambiar a algo  mas facil si hay problemas
+	--declare @rut bigint
+	--execute BuscarIDCasa @nombcasa, @rut output--se puede cambiar a algo  mas facil si hay problemas
 	select * from Platos inner join Casas
 	on @rut= RUT and @rut = _RUT
 	where IDplato = @idplato and _RUT = @rut
@@ -217,6 +218,61 @@ go
 
 --exec AgregarPlato 'necar',124,'imagen','Los pinos'
 --select * from Platos
+----------------------------------------------------------------------------------------------------------------------------
+create proc ModificarPlato
+@nombre varchar(50),
+@precio float,
+@imagen varchar(50),
+@rut bigint,
+@id int -- es lo que me ayuda a especificar el plato
+as
+begin
+	--recibe los datos necesarios para modificar el plato
+	if not exists (select * from Platos where IDplato = @id and _RUT = @rut)--ta mal, le doy nombre new
+	return -1 --no existe el plato
+	update Platos set Nomb_Plato = @nombre, Precio = @precio,Imagen = @imagen
+	where IDplato = @id and _RUT = @rut
+	if @@ERROR <> 0
+	return -2
+	return 1
+end
+go
+
+--exec ModificarPlato 'nombreplato',150.20,'imageeen',179828837700,1 
+--select * from Platos
+----------------------------------------------------------------------------------------------------------------------------
+create proc EliminarPlato
+@id int,
+@rut bigint
+as
+begin
+	--elimina todos los registros de pedido y de la tabla platos
+	--controlar que exista? -existe porque ya esta cargado
+	if not exists (select * from Platos where IDplato=@id and _RUT=@rut)
+	return -1--no existe el plato // no es necesario, pero por las dudas...
+	begin tran
+	delete from Pedidos where _IDplato = @id and RUT_Casa = @rut
+	if @@ERROR <> 0
+	begin
+	rollback tran
+	return -2
+	end
+	delete from Platos where IDplato = @id and _RUT = @rut
+	if @@ERROR<>0
+	begin
+	rollback tran
+	return -2
+	end
+	commit tran
+	return 1
+end
+go
+
+--exec EliminarPlato 1, 179828837700
+--select * from Platos where IDplato=1
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------inserción de datos---------------------------------------------------------------------------

@@ -10,15 +10,15 @@ namespace Persistencia
 {
    public class Pplato
     {
-       public static Plato BuscarPlato(int _id,string nombC)//como solo muestro uno ahora no es lista, es solamente plato.
+       public static Plato BuscarPlato(int _id,long _rut)
        {
-          // List<Plato> lista= new List<Plato>();
+          
            int id;
            string nombPlato, imagen;
            double precio;
            Plato p=null;
 
-           Casa c=null;//tengo que pedir los datos de la casa para poder crearla
+           Casa c=null;
            long rut;
            string nombCasa, espec;
 
@@ -26,7 +26,7 @@ namespace Persistencia
            SqlConnection con = new SqlConnection(Conexion.Con);
            SqlCommand com = new SqlCommand("buscarplato ",con);
            com.Parameters.AddWithValue("@idplato", _id);
-           com.Parameters.AddWithValue("@nombcasa", nombC);
+           com.Parameters.AddWithValue("@rut", _rut);
            com.CommandType = CommandType.StoredProcedure;
 
            try
@@ -34,7 +34,7 @@ namespace Persistencia
                con.Open();
                lector = com.ExecuteReader();
 
-               if (lector.Read())//era while porque mostraba todos los que tengan ese id pero ahora solo muestro 1 
+               if (lector.Read())
                {
                    id = (int)lector["IDplato"];
                    nombPlato = (string)lector["Nomb_Plato"];
@@ -45,7 +45,7 @@ namespace Persistencia
                    espec = (string)lector["Especializacion"];
                    c = new Casa(rut, nombCasa, espec);
                    p = new Plato(id, nombPlato, imagen, precio,c);
-                 //  lista.Add(p);
+                 
                }
            }
 
@@ -93,6 +93,68 @@ namespace Persistencia
 
            id = Convert.ToInt32(salida.Value);
            return id;
+       }
+
+       public static void Modificar(Plato p)
+       {
+           SqlConnection con = new SqlConnection(Conexion.Con);
+           SqlCommand cmd = new SqlCommand("ModificarPlato ", con);
+           cmd.CommandType = CommandType.StoredProcedure;
+           cmd.Parameters.AddWithValue("@nombre",p.Nombre);
+           cmd.Parameters.AddWithValue("@precio", p.Precio);
+           cmd.Parameters.AddWithValue("@imagen", p.Imagen);
+           cmd.Parameters.AddWithValue("@rut",p.Casa.Rut);
+           cmd.Parameters.AddWithValue("@id", p.Id);
+           SqlParameter ret = new SqlParameter("@ret", SqlDbType.Int);
+           ret.Direction = ParameterDirection.ReturnValue;
+           cmd.Parameters.Add(ret);
+
+           try
+           {
+               con.Open();
+               cmd.ExecuteNonQuery();
+
+               if ((int)ret.Value == -1)
+               { throw new Exception("El plato que quiere modificar no existe"); }//esto no tendria que ir porque se supone que el plato si existe, w/e
+               if ((int)ret.Value == -2)
+                   throw new Exception("Error al modificar plato.");
+           }
+
+           catch (Exception ex)
+           { throw ex; }
+
+           finally
+           { con.Close(); }
+       }
+
+       public static void Eliminar(Plato p)
+       {
+           SqlConnection con = new SqlConnection(Conexion.Con);
+           SqlCommand cmd = new SqlCommand("EliminarPlato ", con);
+           cmd.CommandType = CommandType.StoredProcedure;
+           cmd.Parameters.AddWithValue("@id",p.Id);
+           cmd.Parameters.AddWithValue("@rut", p.Casa.Rut);
+           SqlParameter ret = new SqlParameter("@ret", SqlDbType.Int);
+           ret.Direction = ParameterDirection.ReturnValue;
+           cmd.Parameters.Add(ret);
+
+
+           try
+           {
+               con.Open();
+               cmd.ExecuteNonQuery();
+
+               if ((int)ret.Value == -1)
+                   throw new Exception("Error: El plato no existe.");
+               else if ((int)ret.Value == -2)
+                   throw new Exception("Error al eliminar los registros del plato.");
+           }
+
+           catch (Exception ex)
+           { throw ex; }
+
+           finally
+           { con.Close(); }
        }
     }
     

@@ -117,17 +117,17 @@
         <td class="style5">
             <asp:Label ID="lblCod" runat="server">Codigo</asp:Label>
 &nbsp;
-            <asp:TextBox ID="txtCodigo" runat="server" Height="22px" Width="202px"></asp:TextBox>
+            <asp:TextBox ID="txtCodigo" runat="server" Height="22px" Width="74px"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;&nbsp;
             <asp:DropDownList ID="ddlNombreCasas" runat="server" style="margin-left: 0px" 
                 Height="24px">
             </asp:DropDownList>
-            &nbsp;
-        </td>
-        <td>
+            &nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnBuscar" runat="server" Height="29px" Text="Buscar" 
                 Width="116px" onclick="btnBuscar_Click" />
         </td>
+        <td>
+            &nbsp;</td>
     </tr>
     <tr>
         <td class="style7">
@@ -161,9 +161,9 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
         <td class="style32">
             <asp:Button ID="btnModificar" runat="server" Text="Modificar" Visible="False" 
-                Width="87px" />
+                Width="87px" onclick="btnModificar_Click" />
             <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" Visible="False" 
-                Width="87px" />
+                Width="87px" onclick="btnEliminar_Click" />
             <br />
             <br />
         </td>
@@ -176,9 +176,7 @@
 &nbsp;
             <asp:TextBox ID="txtNombre" runat="server" Height="22px" Visible="False" 
                 Width="202px"></asp:TextBox>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnGuardar" runat="server" Height="32px" Text="Guardar" 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnGuardar" runat="server" Height="32px" Text="Guardar" 
                 Width="71px" onclick="btnGuardar_Click" Visible="False" />
             
             <br />
