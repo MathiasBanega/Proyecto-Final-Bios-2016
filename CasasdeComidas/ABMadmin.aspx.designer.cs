@@ -84,24 +84,6 @@ public partial class ABMadmin {
     protected global::System.Web.UI.WebControls.TextBox txtNombreUsu;
     
     /// <summary>
-    /// Control lblNom.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label lblNom;
-    
-    /// <summary>
-    /// Control txtNombreComp.
-    /// </summary>
-    /// <remarks>
-    /// Campo generado automáticamente.
-    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtNombreComp;
-    
-    /// <summary>
     /// Control lblPas.
     /// </summary>
     /// <remarks>
@@ -120,6 +102,24 @@ public partial class ABMadmin {
     protected global::System.Web.UI.WebControls.TextBox txtContraseña;
     
     /// <summary>
+    /// Control lblNom.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label lblNom;
+    
+    /// <summary>
+    /// Control txtNombreComp.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.TextBox txtNombreComp;
+    
+    /// <summary>
     /// Control lblCar.
     /// </summary>
     /// <remarks>
@@ -129,13 +129,22 @@ public partial class ABMadmin {
     protected global::System.Web.UI.WebControls.Label lblCar;
     
     /// <summary>
-    /// Control txtCargo.
+    /// Control ddlCargo.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.TextBox txtCargo;
+    protected global::System.Web.UI.WebControls.DropDownList ddlCargo;
+    
+    /// <summary>
+    /// Control btnGuardar.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button btnGuardar;
     
     /// <summary>
     /// Control GridView1.

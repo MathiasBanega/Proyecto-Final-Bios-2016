@@ -65,6 +65,52 @@
     <Content Include="frmPedidosPendientes.aspx" />
     <Content Include="frmRealizarPedido.aspx" />
     <Content Include="frmRegistroCliente.aspx" />
+    <Content Include="imagenes\arrollado-pollo.jpg" />
+    <Content Include="imagenes\arros-con-verduras.jpg" />
+    <Content Include="imagenes\arroz-tres-delicias.jpg" />
+    <Content Include="imagenes\asado.jpg" />
+    <Content Include="imagenes\berenjenas-con-salsa.jpg" />
+    <Content Include="imagenes\chinchulines.jpg" />
+    <Content Include="imagenes\chivito-al-pan.jpg" />
+    <Content Include="imagenes\chivito-al-plato.jpg" />
+    <Content Include="imagenes\chorizo-al-pan.jpg" />
+    <Content Include="imagenes\chorizo.jpg" />
+    <Content Include="imagenes\chotoo.jpg" />
+    <Content Include="imagenes\cuscus.jpg" />
+    <Content Include="imagenes\empanadas.jpg" />
+    <Content Include="imagenes\ensalada-arroz-guacamole.jpg" />
+    <Content Include="imagenes\ensalada-de-espinacas-y-tofu.jpg" />
+    <Content Include="imagenes\ensalada-de-peras-glaseadas.jpg" />
+    <Content Include="imagenes\fugazzeta.jpg" />
+    <Content Include="imagenes\gazpacho.jpg" />
+    <Content Include="imagenes\gramajo.jpg" />
+    <Content Include="imagenes\hamburguesa-completa.jpg" />
+    <Content Include="imagenes\hamburguesa-de-lentejas.jpg" />
+    <Content Include="imagenes\humus.jpg" />
+    <Content Include="imagenes\kokoda.jpg" />
+    <Content Include="imagenes\metro-comun.jpg" />
+    <Content Include="imagenes\metro-muzza.jpg" />
+    <Content Include="imagenes\milanesa-completa-sin-pan.jpg" />
+    <Content Include="imagenes\milanesa-completsa.jpg" />
+    <Content Include="imagenes\milanesa-con-fritas.jpg" />
+    <Content Include="imagenes\milanesa-napolitana.jpg" />
+    <Content Include="imagenes\morcilla.jpg" />
+    <Content Include="imagenes\moussaka_griega.png" />
+    <Content Include="imagenes\pasta-con-brocoli-y-anchoas.jpg" />
+    <Content Include="imagenes\pizza-vegana.jpg" />
+    <Content Include="imagenes\pizzeta-gustos.jpg" />
+    <Content Include="imagenes\pizzeta-muzza.jpg" />
+    <Content Include="imagenes\pollo-a-las-brasas.jpg" />
+    <Content Include="imagenes\pollo-al-curry.jpg" />
+    <Content Include="imagenes\porcion-faina.jpg" />
+    <Content Include="imagenes\porcion-muzza.jpg" />
+    <Content Include="imagenes\pulpon.jpg" />
+    <Content Include="imagenes\ramen.jpg" />
+    <Content Include="imagenes\sopa de macaco.jpg" />
+    <Content Include="imagenes\sopa-de-miso.jpg" />
+    <Content Include="imagenes\sushi.jpg" />
+    <Content Include="imagenes\takoyaki.jpg" />
+    <Content Include="imagenes\vacio-a-la-parrilla.jpg" />
     <Content Include="obj\Debug\CasasdeComidas.csproj.FileListAbsolute.txt" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -169,7 +215,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="imagenes\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>

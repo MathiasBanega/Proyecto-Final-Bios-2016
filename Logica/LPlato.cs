@@ -28,7 +28,7 @@ namespace Logica
 
        public static void Eliminar(Plato p)
        {
-           Pplato.Modificar(p);
+           Pplato.Eliminar(p);
        }
     }
 }

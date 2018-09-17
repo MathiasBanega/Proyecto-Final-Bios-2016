@@ -43,6 +43,7 @@ namespace Entidades
                    for (int i = 0; i < value.Length; i++)
                    {
                        if (!char.IsLetter(Convert.ToChar(value.Substring(i, 1))))
+                           if (!char.IsWhiteSpace(Convert.ToChar(value.Substring(i, 1))))
                                throw new Exception("Su nombre no puede contener números, por favor verifique que los datos sean correctos.");
                    }
 

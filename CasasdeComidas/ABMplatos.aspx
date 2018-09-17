@@ -156,7 +156,17 @@
         <td class="style30">
         </td>
         <td class="style31">
-&nbsp;<asp:GridView ID="GridView1" runat="server" Height="10px" Width="516px">
+&nbsp;<asp:GridView ID="GridView1" runat="server" Height="10px" Width="516px" 
+                AutoGenerateColumns="False">
+                <Columns>
+                    <asp:BoundField DataField="Id" HeaderText="ID" />
+                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
+                    <asp:BoundField DataField="Precio" HeaderText="Precio" />
+                    <asp:ImageField DataImageUrlField="Imagen" HeaderText="Imagen">
+                        <ControlStyle Height="100px" Width="100px" />
+                        <ItemStyle HorizontalAlign="Center" />
+                    </asp:ImageField>
+                </Columns>
             </asp:GridView>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
         <td class="style32">
@@ -176,8 +186,12 @@
 &nbsp;
             <asp:TextBox ID="txtNombre" runat="server" Height="22px" Visible="False" 
                 Width="202px"></asp:TextBox>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="btnGuardar" runat="server" Height="32px" Text="Guardar" 
-                Width="71px" onclick="btnGuardar_Click" Visible="False" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<asp:Button ID="btnAceptar" runat="server" Height="32px" 
+                onclick="btnAceptar_Click" Text="Aceptar" Visible="False" Width="71px" />
+            
+            &nbsp;&nbsp;
+            <asp:Button ID="btnCancelNuevo" runat="server" Height="32px" 
+                onclick="btnCancelNuevo_Click" Text="Cancelar" Visible="False" Width="71px" />
             
             <br />
             &nbsp;&nbsp;
@@ -186,8 +200,9 @@
 &nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtPrecio" runat="server" Height="22px" Visible="False" 
                 Width="202px" ontextchanged="txtPrecio_TextChanged"></asp:TextBox>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnAceptar" runat="server" Height="32px" 
-                onclick="btnAceptar_Click" Text="Aceptar" Visible="False" Width="71px" />
+            &nbsp;<asp:Button ID="btnGuardar" runat="server" Height="32px" Text="Guardar" 
+                Width="71px" onclick="btnGuardar_Click" Visible="False" />
+            
             &nbsp;&nbsp;
             <asp:Button ID="btnCancelar" runat="server" Height="32px" 
                 onclick="btnCancelar_Click" Text="Cancelar" Visible="False" Width="71px" />

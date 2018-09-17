@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
+    <Compile Include="PAdmin.cs" />
     <Compile Include="PCasa.cs" />
     <Compile Include="Pplato.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

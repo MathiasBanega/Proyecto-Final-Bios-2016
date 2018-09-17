@@ -40,7 +40,7 @@ public partial class ABMplatos : System.Web.UI.Page
         txtCodigo.Enabled = false;
         btnBuscar.Enabled = false;
         ddlNombreCasas.Enabled=false;
-        btnCancelar.Visible = true;
+        btnCancelNuevo.Visible = true;
         lblError.Text="";
         lnkNuevo.Visible = false;
         btnAceptar.Visible = true;
@@ -74,6 +74,7 @@ public partial class ABMplatos : System.Web.UI.Page
         txtCodigo.Text = "";
         btnModificar.Visible = false;
         btnEliminar.Visible = false;
+        btnCancelNuevo.Visible = false;
         GridView1.DataSource = null;
         GridView1.DataBind();
     }
@@ -99,11 +100,30 @@ public partial class ABMplatos : System.Web.UI.Page
         btnVerImg.Visible = true;
     }
 
+    protected void DesGrid()
+    {
+        GridView1.Visible = false;
+        btnModificar.Visible = false;
+        btnEliminar.Visible = false;
+    }
+    protected void ActGrid()
+    {
+        List<Plato> l = new List<Plato>();
+        Plato p = (Plato)Session["Plato"];
+        l.Add(p);
+        txtCodigo.Text = p.Id.ToString();
+        GridView1.Visible = true;
+        GridView1.DataSource = l;
+        GridView1.DataBind();
+        btnEliminar.Visible = true;
+        btnModificar.Visible = true;
+    }
+
     protected void txtPrecio_TextChanged(object sender, EventArgs e)
     {
 
     }
-
+    
    
 
     protected void lnkNuevo_Click(object sender, EventArgs e)
@@ -116,6 +136,8 @@ public partial class ABMplatos : System.Web.UI.Page
 
         try
         {
+            GridView1.Visible = true;
+
             int id = Convert.ToInt32(txtCodigo.Text);
             long rut = Convert.ToInt64(ddlNombreCasas.SelectedItem.Value);
             Plato p = LPlato.BuscarPlato(id, rut);
@@ -153,6 +175,7 @@ public partial class ABMplatos : System.Web.UI.Page
     protected void btnCancelar_Click(object sender, EventArgs e)
     {
         LimpiarFormulario();
+        ActGrid();
     }
 
     protected void btnVerImg_Click(object sender, EventArgs e)
@@ -188,15 +211,10 @@ public partial class ABMplatos : System.Web.UI.Page
             Casa c = p.Casa;
             p = new Plato(cod, nom, img, pre, c);
             LPlato.Modificar(p);
-            //sube p a session y muestra en grid view, tambien lblerror dice que se cambio con exito.
-            Session["Plato"] = p;
-            List<Plato> l = new List<Plato>();
-            l.Add(p);
+            //sube p a session y muestra en grid view, tambien lblerror dice que se modifico con exito.
+            Session["Plato"] = p;          
             LimpiarFormulario();
-            GridView1.DataSource = l;
-            GridView1.DataBind();
-            btnModificar.Visible = true;
-            btnEliminar.Visible = true;
+            ActGrid();
             lblError.Text = "Se Modifico el plato con exito.";
             
         }
@@ -253,11 +271,12 @@ public partial class ABMplatos : System.Web.UI.Page
     {
         try
         {
+            DesGrid();
             ActivarBM();
             Plato p = (Plato)Session["Plato"];
             txtNombre.Text = p.Nombre;
             txtPrecio.Text = p.Precio.ToString();
-            imgFoto.ImageUrl = p.Imagen;//hay que buscar bien las imagenes para cada plato  
+            imgFoto.ImageUrl = p.Imagen; 
             imgFoto.Width = fupImagen.Width;
             imgFoto.Height = fupImagen.Height;
         }
@@ -279,6 +298,11 @@ public partial class ABMplatos : System.Web.UI.Page
 
         catch (Exception ex)
         { lblError.Text = ex.Message; }
+    }
+
+    protected void btnCancelNuevo_Click(object sender, EventArgs e)
+    {
+        LimpiarFormulario();
     }
 
     

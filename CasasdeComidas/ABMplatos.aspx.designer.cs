@@ -120,13 +120,22 @@ public partial class ABMplatos {
     protected global::System.Web.UI.WebControls.TextBox txtNombre;
     
     /// <summary>
-    /// Control btnGuardar.
+    /// Control btnAceptar.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnGuardar;
+    protected global::System.Web.UI.WebControls.Button btnAceptar;
+    
+    /// <summary>
+    /// Control btnCancelNuevo.
+    /// </summary>
+    /// <remarks>
+    /// Campo generado automáticamente.
+    /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Button btnCancelNuevo;
     
     /// <summary>
     /// Control lblPre.
@@ -147,13 +156,13 @@ public partial class ABMplatos {
     protected global::System.Web.UI.WebControls.TextBox txtPrecio;
     
     /// <summary>
-    /// Control btnAceptar.
+    /// Control btnGuardar.
     /// </summary>
     /// <remarks>
     /// Campo generado automáticamente.
     /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     /// </remarks>
-    protected global::System.Web.UI.WebControls.Button btnAceptar;
+    protected global::System.Web.UI.WebControls.Button btnGuardar;
     
     /// <summary>
     /// Control btnCancelar.
